@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenLocal()
+    maven {
+        // because Srg2Source needs an eclipse dependency.
+        name = "eclipse"
+        url = "https://repo.eclipse.org/content/groups/eclipse/"
+    }
+    jcenter() // get as many deps from here as possible
+    mavenCentral()
+
+    // because SS and its snapshot
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
+dependencies {
+    compile gradleApi()
+    
+}
